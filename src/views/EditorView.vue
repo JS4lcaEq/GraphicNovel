@@ -172,12 +172,13 @@ onUnmounted(() => {
                     <pre>{{ store.mermaid }}</pre>
                     </p>                    -->
                     <p>
-                        <el-button type="success" @click="onAdd">Add</el-button>
+                        <el-button type="success" @click="onAdd">Новая сцена</el-button>
                     </p>
                     <el-card v-if="store.selectedNode" class="edit-form">
                         <template #header>
                             <div class="card-header">
-                                <span>Edit Scene {{ form.id }}</span>
+                                <span>Редактирование сцены</span>
+                                <span>Id:{{ form.id }}</span>
                             </div>
                         </template>
 
@@ -187,11 +188,11 @@ onUnmounted(() => {
                                 <strong>{{ form.id }}</strong>
                             </el-form-item>
 
-                            <el-form-item label="Scene Text" prop="text">
+                            <el-form-item label="Текст сцены" prop="text">
                                 <el-input v-model="form.text" type="textarea" :rows="4" />
                             </el-form-item>
 
-                            <el-form-item label="Scene Image" prop="bg">
+                            <el-form-item label="Фон сцены" prop="bg">
                                 <el-col :span="11">
                                     <el-input v-model="form.bg" type="text" />
                                 </el-col>
@@ -208,14 +209,14 @@ onUnmounted(() => {
                             </el-form-item>
 
                             <el-form-item label="." prop="buttons">
-                                <el-button type="primary" @click="saveChanges">Save</el-button>
+                                <el-button type="primary" @click="saveChanges">Запомнить</el-button>
                                 <span v-if="!store.isExistsInputButtonGo(form.id)">
-                                    &nbsp; <el-button type="danger" @click="onDel">Delete</el-button>
+                                    &nbsp; <el-button type="danger" @click="onDel">Удалить</el-button>
                                 </span>
                                
                             </el-form-item>
 
-                            <el-form-item label="Scene Buttons">
+                            <el-form-item label="Кнопки сцены">
                                 <el-space direction="vertical" style="width: 100%">
                                     <div v-for="(button, index) in form.buttons" :key="index" class="button-item">
                                         <span>{{ button.id }}</span>
@@ -225,13 +226,13 @@ onUnmounted(() => {
                                             @confirm="removeButton(index)">
                                             <template #reference>
                                                 <el-button type="danger" >
-                                                    Delete
+                                                    Удалить
                                                 </el-button>
                                             </template>
                                         </el-popconfirm>
                                     </div>
                                     <el-button type="primary" @click="onAddButton" >
-                                        Add Button
+                                        Новая кнопка
                                     </el-button>
                                 </el-space>
                             </el-form-item>
