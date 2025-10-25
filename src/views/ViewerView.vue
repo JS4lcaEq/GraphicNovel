@@ -7,6 +7,8 @@ const data = useDataStore()
 import { useHistoryStore } from '@/stores/history'
 const history = useHistoryStore()
 
+
+
 const setBg = (imageUrl) => { elementContent.style.backgroundImage = `url('${imageUrl}')` }
 
 onMounted(() => {
@@ -22,7 +24,7 @@ const current = computed(() => { return data.get(history.current) })
 
     <div class="viewer-view">
         <div class="viewer-content"
-            :style="{ backgroundImage: 'url(/src/assets/img/' + data.get(history.current).bg + ')' }">
+            :style="{ backgroundImage: 'url(./img/' + data.get(history.current).bg + ')' }">
             <!-- <p>{{ data.get(history.current) }}</p>
     <p>{{ history.current }}</p> -->
             <div class="text">{{ current.text }}</div>
@@ -32,6 +34,7 @@ const current = computed(() => { return data.get(history.current) })
                     {{ btn.text }}
                 </button>
             </div>
+           
         </div>
     </div>
 </template>

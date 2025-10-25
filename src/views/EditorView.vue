@@ -196,7 +196,7 @@ onUnmounted(() => {
                                     <el-input v-model="form.bg" type="text" />
                                 </el-col>
                                 <el-col :span="11">
-                                    <img v-if="form.bg" :src="'/src/assets/img/'+form.bg" id="img-preview" />
+                                    <img v-if="form.bg" :src="'./img/'+form.bg" id="img-preview" />
                                 </el-col>                               
                             </el-form-item>
 
