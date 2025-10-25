@@ -3,7 +3,7 @@ name: CI/CD для Vue SPA
 on:
   push:
     branches:
-      - main # Запускать при пуше в ветку main
+      - master # Запускать при пуше в ветку master
 
 jobs:
   build-and-deploy:
