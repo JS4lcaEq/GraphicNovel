@@ -14,7 +14,7 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        title: 'Корневая страница',
+        title: 'Графическая новелла',
         note: 'Главная страница приложения'
       }
     },
@@ -45,7 +45,7 @@ const router = createRouter({
       component: FilesView,
       meta: {
         title: 'Файлы',
-        note: 'Страница с файлами'
+        note: 'Страница управления файлами'
       }
     },
     {
