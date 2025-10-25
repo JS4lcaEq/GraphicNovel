@@ -1,0 +1,18 @@
+sequenceDiagram
+participant 1 as Школа
+participant 2 as Заболела 
+participant 3 as Сознаться/обмануть
+participant 4 as Доктора вызывали
+participant 5 as Где симулянт
+participant 6 as Спрятаться/сдаться
+participant 7 as Кладбище
+participant 8 as Пикник
+
+1->>2: дальше
+2->>3: дальше
+3->>4: вызови доктора
+4->>5: дальше
+5->>6: дальше
+6->>7: сдаться
+6->>8: спрятаться под одеялом
+3->>8: разреши прогулять
