@@ -6,8 +6,8 @@ import { ElMessage } from 'element-plus'
 
 const store = useDataStore()
 
-    import { useHistoryStore } from '@/stores/history'  
-    const history = useHistoryStore()
+import { useHistoryStore } from '@/stores/history'
+const history = useHistoryStore()
 
 const selectedNode = ref(null)
 const selectedPage = ref(null)
@@ -163,14 +163,14 @@ onUnmounted(() => {
         <el-row>
             <el-col :span="10">
                 <div>
-               <!-- <p>{{ store.data }}</p>
+                    <!-- <p>{{ store.data }}</p>
                     <p>{{ store.pages }}</p>
                     <p>{{ store.buttons }}</p>
                     <p>store.selectedNodeId = {{ store.selectedNodeId }}</p>
                     <p>store.selectedNode = {{ store.selectedNode }}</p>
                     <p>
-                    <pre>{{ store.mermaid }}</pre>
-                    </p>                    -->
+                        <pre>{{ store.mermaid }}</pre>
+                    </p> -->
                     <p>
                         <el-button type="success" @click="onAdd">Новая сцена</el-button>
                     </p>
@@ -197,15 +197,15 @@ onUnmounted(() => {
                                     <el-input v-model="form.bg" type="text" />
                                 </el-col>
                                 <el-col :span="11">
-                                    <img v-if="form.bg" :src="'./img/'+form.bg" id="img-preview" />
-                                </el-col>                               
+                                    <img v-if="form.bg" :src="'./img/' + form.bg" id="img-preview" />
+                                </el-col>
                             </el-form-item>
 
                             <el-form-item label="Стиль" prop="className">
                                 <el-col :span="11">
                                     <el-input v-model="form.className" type="text" />
                                 </el-col>
-                                
+
                             </el-form-item>
 
                             <el-form-item label="." prop="buttons">
@@ -213,25 +213,27 @@ onUnmounted(() => {
                                 <span v-if="!store.isExistsInputButtonGo(form.id)">
                                     &nbsp; <el-button type="danger" @click="onDel">Удалить</el-button>
                                 </span>
-                               
+
                             </el-form-item>
 
                             <el-form-item label="Кнопки сцены">
+                                <div>текст / переход к сцене / условие демонстрации</div>
                                 <el-space direction="vertical" style="width: 100%">
                                     <div v-for="(button, index) in form.buttons" :key="index" class="button-item">
                                         <span>{{ button.id }}</span>
-                                        <el-input v-model="button.text" placeholder="Button text" />
-                                        <el-input v-model="button.go" placeholder="Go to page" />
+                                        <el-input v-model="button.text" placeholder="Button text" />/
+                                        <el-input v-model="button.go" placeholder="Go to page" />/
+                                        <el-input v-model="button.ifRegExp" placeholder="if RegExp" />
                                         <el-popconfirm title="Are you sure to delete this button?"
                                             @confirm="removeButton(index)">
                                             <template #reference>
-                                                <el-button type="danger" >
+                                                <el-button type="danger">
                                                     Удалить
                                                 </el-button>
                                             </template>
                                         </el-popconfirm>
                                     </div>
-                                    <el-button type="primary" @click="onAddButton" >
+                                    <el-button type="primary" @click="onAddButton">
                                         Новая кнопка
                                     </el-button>
                                 </el-space>

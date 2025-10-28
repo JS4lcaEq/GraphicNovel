@@ -38,3 +38,15 @@ npm run dev
 ```sh
 npm run build
 ```
+### Sample Diagram
+
+```mermaid
+graph TD
+    p1["1:Start Scene"]
+    p2["2:Middle Scene"]
+    p3["3:End Scene"]
+    p1 -->|Next| p2
+    p2 -->|Back| p1
+    p2 -->|Next| p3
+    p3 -->|Back| p1
+```

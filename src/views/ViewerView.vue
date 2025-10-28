@@ -24,13 +24,17 @@ const current = computed(() => { return data.get(history.current) })
 
     <div class="viewer-view">
         <div class="viewer-content"
-            :style="{ backgroundImage: 'url(./img/' + data.get(history.current).bg + ')' }">
-            <!-- <p>{{ data.get(history.current) }}</p>
-    <p>{{ history.current }}</p> -->
+            :style="{ backgroundImage: 'url(./img/' + data.get(history.getCurrent()).bg + ')' }">
+            
+            <!-- <p>{{ data.get(history.getCurrent()) }}</p> -->
+            <!-- <p>{{ history.getCurrent() }}</p>  -->
+            <!-- <p>{{ history.getHistory() }}</p> -->
+             
+            <p>{{ history.getHistoryText }}</p>
             <div class="text">{{ current.text }}</div>
             <div class="buttons">
-                <button v-for="(btn, index) in data.get(history.current).buttons" :key="index"
-                    @click="history.step(btn.go - 0)">
+                <button v-for="(btn, index) in data.get(history.getCurrent()).buttons" :key="index"
+                    @click="history.step(btn.go - 0, btn.id - 0)">
                     {{ btn.text }}
                 </button>
             </div>

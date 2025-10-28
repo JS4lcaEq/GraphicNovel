@@ -40,7 +40,7 @@ export const useDataStore = defineStore("data", () => {
     const page = data.value.find(item => item.id === pageId);
     if (page) {
       const newId = buttons.value.length > 0 ? Math.max(...buttons.value.map(button => button.id? button.id : 0)) + 1 : 1;
-      const newButton = { id: newId, text: "New Button ", go: null };
+      const newButton = { id: newId, text: "New Button ", go: null, ifRegExp: null };
       console.log("data.js:addButton newButton=", newButton)
       page.buttons.push(newButton);
       return newButton;
@@ -74,6 +74,7 @@ export const useDataStore = defineStore("data", () => {
           text: button.text,
           go: button.go,
           from: page.id,
+          ifRegExp: button.ifRegExp
         });
       });
     });
@@ -83,7 +84,7 @@ export const useDataStore = defineStore("data", () => {
   const get = (id) => {
     const found = data.value.find((item) => item.id === id);
     const bttns = found ? found.buttons.map((button) => {
-      return { id: button.id, text: button.text, go: button.go };
+      return { id: button.id, text: button.text, go: button.go, ifRegExp: button.ifRegExp};
     })  : []  ;
     return found ? {id: found.id, text: found.text, bg: found.bg, className: found.className, buttons: bttns} : null;
   };
@@ -94,7 +95,7 @@ export const useDataStore = defineStore("data", () => {
       result += `    p${page.id}["${page.id}:${page.text}"]\n`;
     });
     buttons.value.forEach((button) => {
-      result += `    p${button.from} -->|${button.id}:${button.text}| p${button.go}\n`;
+      result += `    p${button.from} -->|${button.id}:${button.text}${button.ifRegExp ? ":"+button.ifRegExp : ""}| p${button.go}\n`;
     });
     return result;
   });
