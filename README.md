@@ -50,3 +50,5 @@ graph TD
     p2 -->|Next| p3
     p3 -->|Back| p1
 ```
+### Live demo page
+[GraphicNovel](https://js4lcaeq.github.io/GraphicNovel/#/)
