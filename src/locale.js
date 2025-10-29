@@ -57,6 +57,7 @@ export default {
           buttons: {
             upload: "Upload novel from JSON file",
             load: "Load novel to JSON file",
+            select: "Select File",
           }
         },
       }
@@ -116,6 +117,7 @@ export default {
           buttons: {
             upload: "Загрузить новеллу из JSON файла на компьютере",
             load: "Выгрузить новеллу в JSON файл на компьютере",
+            select: "Выбрать файл",
           }
         },
       }
