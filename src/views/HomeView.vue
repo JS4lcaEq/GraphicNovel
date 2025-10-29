@@ -19,7 +19,7 @@ const handleChange = (val) => {
     <template v-for="(route, index) in router.getRoutes()" :key="route.meta.source">
       <el-collapse-item :title="route.meta.title" :name="index" v-if="route.path !== '/'">
         <template #title="{ isActive }">
-          <RouterLink :to="route.path">{{ route.meta.title }}</RouterLink>
+          <RouterLink :to="route.path">{{ $t('message.menu.' + route.name ) }}</RouterLink>
         </template>
         <p>{{ route.meta.note }}</p>
       </el-collapse-item>

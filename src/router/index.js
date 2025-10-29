@@ -14,7 +14,7 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        title: 'Графическая новелла',
+        title: '',
         note: 'Главная страница приложения'
       }
     },
@@ -26,7 +26,7 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: AboutView,
       meta: {
-        title: 'Инструкции',
+        title: 'about',
         note: 'Страница с инструкциями'
       }
     },
@@ -35,7 +35,7 @@ const router = createRouter({
       name: 'editor',
       component: EditorView,
       meta: {
-        title: 'Редактор',
+        title: 'editor',
         note: 'Страница редактора'
       }
     },
@@ -44,7 +44,7 @@ const router = createRouter({
       name: 'files',
       component: FilesView,
       meta: {
-        title: 'Файлы',
+        title: 'files',
         note: 'Страница управления файлами'
       }
     },
@@ -53,7 +53,7 @@ const router = createRouter({
       name: 'viewer',
       component: ViewerView,
       meta: {
-        title: 'Просмотр',
+        title: 'viewer',
         note: 'Страница просмотра'
       }
     }

@@ -19,9 +19,17 @@ const goHome = () => {
   <el-container>
     <el-header>
       <div id="h-b">
-        <el-icon ><Back @click="goBack" /></el-icon>
+        <el-icon>
+          <Back @click="goBack" />
+        </el-icon>
         <img alt="logo" class="logo-icon" src="@/assets/logo.png" @click="goHome" />
-        <span>{{ route.meta.title || 'Graphic Novel' }}</span>
+        <span> {{ $t('message.h1') }} / {{ $t('message.menu.' + route.name ) }}</span>
+        <div id="locale-switch">
+          <select v-model="$i18n.locale">
+            <option value="en">english</option>
+            <option value="ru">русский</option>
+          </select>
+        </div>
       </div>
     </el-header>
     <el-main>
@@ -65,7 +73,19 @@ header ul {
   gap: 10px;
   font-size: 28px;
 }
+
 #h-b i {
   cursor: pointer;
+}
+#locale-switch {
+  position: absolute;
+  right: 20px;
+
+}
+
+#locale-switch select {
+border: none;
+background-color: transparent;
+cursor: pointer;
 }
 </style>
