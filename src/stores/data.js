@@ -20,7 +20,7 @@ export const useDataStore = defineStore("data", () => {
   const load = () => {
     const savedData = localStorage.getItem("data");
     if (savedData) {
-      console.log("data.js:load savedData=", savedData);
+      // console.log("data.js:load savedData=", savedData);
       data.value = JSON.parse(savedData);
     }
   };
@@ -41,7 +41,7 @@ export const useDataStore = defineStore("data", () => {
     if (page) {
       const newId = buttons.value.length > 0 ? Math.max(...buttons.value.map(button => button.id? button.id : 0)) + 1 : 1;
       const newButton = { id: newId, text: "New Button ", go: null, ifRegExp: null };
-      console.log("data.js:addButton newButton=", newButton)
+      // console.log("data.js:addButton newButton=", newButton)
       page.buttons.push(newButton);
       return newButton;
     }
@@ -101,7 +101,7 @@ export const useDataStore = defineStore("data", () => {
   });
 
   const updateSingleElement = (newElement) => {
-    console.log("data.js:updateSingleElement newElement=", newElement);
+    // console.log("data.js:updateSingleElement newElement=", newElement);
     const index = data.value.findIndex(item => item.id === newElement.id);
     if (index !== -1) {
       data.value[index] = { ...newElement };

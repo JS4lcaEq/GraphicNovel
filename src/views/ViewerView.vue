@@ -1,13 +1,8 @@
 <script setup>
-import { ref, computed, onMounted} from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
-import { useDataStore } from '@/stores/data'
-const data = useDataStore()
-
-import { useHistoryStore } from '@/stores/history'
-const history = useHistoryStore()
-
-
+import { useDataStore } from '@/stores/data'; const data = useDataStore();
+import { useHistoryStore } from '@/stores/history'; const history = useHistoryStore();
 
 const setBg = (imageUrl) => { elementContent.style.backgroundImage = `url('${imageUrl}')` }
 
@@ -18,27 +13,33 @@ onMounted(() => {
 
 const current = computed(() => { return data.get(history.current) })
 
+const isVisible = (historyText, pattern) => {
+    if (!pattern || pattern.length == '') return true;
+    const rg = new RegExp(pattern, 'g');
+    return rg.test(historyText);
+}
+
 </script>
 
 <template>
-
+    <p>{{ history.getHistoryText }}</p>
     <div class="viewer-view">
         <div class="viewer-content"
             :style="{ backgroundImage: 'url(./img/' + data.get(history.getCurrent()).bg + ')' }">
-            
+
             <!-- <p>{{ data.get(history.getCurrent()) }}</p> -->
             <!-- <p>{{ history.getCurrent() }}</p>  -->
             <!-- <p>{{ history.getHistory() }}</p> -->
-             
-            <p>{{ history.getHistoryText }}</p>
+
             <div class="text">{{ current.text }}</div>
             <div class="buttons">
-                <button v-for="(btn, index) in data.get(history.getCurrent()).buttons" :key="index"
-                    @click="history.step(btn.go - 0, btn.id - 0)">
-                    {{ btn.text }}
-                </button>
+                <template v-for="(btn, index) in data.get(history.getCurrent()).buttons" :key="index">
+                    <button @click="history.step(btn.go - 0, btn.id - 0)" v-if="isVisible(history.getHistoryText, btn.ifRegExp)">
+                        {{ btn.text }}
+                    </button>
+                </template>
             </div>
-           
+
         </div>
     </div>
 </template>
@@ -84,7 +85,6 @@ const current = computed(() => { return data.get(history.current) })
 
 .buttons {
     display: flex;
-    justify-content:space-between;    
+    justify-content: space-between;
 }
-
 </style>
