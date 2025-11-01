@@ -71,6 +71,7 @@ const isVisible = (historyText, pattern) => {
     margin-top: 100px;
     font-size: 44px;
     text-align: center;
+    color: greenyellow;
 }
 
 .viewer-content button {
@@ -78,8 +79,8 @@ const isVisible = (historyText, pattern) => {
     padding: 10px 20px;
     font-size: 34px;
     background-color: transparent;
-    border: 1px solid #000;
-    color: #000;
+    border: 1px solid greenyellow;
+    color: greenyellow;
     cursor: pointer;
 }
 

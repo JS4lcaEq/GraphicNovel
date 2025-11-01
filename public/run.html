@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <title>Graphic Novel Runner</title>
+    <script src="lib.js"></script>
+    <script src="data.js"></script>
+    <style>
+      html, body {
+        font-family: Arial, sans-serif;
+        line-height: 2.6;
+        margin: 0;
+        padding: 0;
+        
+        height: 100%;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.7);
+      } 
+      #app {
+        margin: auto;
+        background-color: white;
+        height: 100vmin;
+        width: 100vmin;
+      }
+      #buttons {
+        display: flex;
+        justify-content: space-between;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 26px;
+        cursor: pointer;
+        background-color: transparent;
+        border: 1px solid greenyellow;
+        color: greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+        <h1>Graphic Novel Runner</h1>
+    </div>
+    <script>
+      
+const Lib = lib()
+
+const history = []
+
+const elementApp = document.getElementById('app');
+const elementBody = document.body;
+
+const render = (scene, button) => {
+    const currentScene = Lib.getScene(data, parseInt(scene), button? parseInt(button) : undefined);
+    elementApp.innerHTML = `
+        <p>${currentScene.text}</p>
+        <p>${currentScene.bg}</p>
+        <p>${Lib.getHistory()}</p>
+        <div id="buttons"></div>
+    `;
+    if(currentScene.bg) {
+        elementApp.style.backgroundImage = `url('img/${currentScene.bg}')`;
+    } else {
+        elementApp.style.backgroundImage = '';
+    }
+    const elementButtons = document.getElementById('buttons');
+    currentScene.buttons.forEach(btn => {
+        const buttonElement = document.createElement('button');
+        buttonElement.textContent = btn.text;
+        buttonElement.onclick = () => {
+            render(btn.go, btn.id);
+        }
+        elementButtons.appendChild(buttonElement);
+    });
+
+
+}
+
+render(1);
+
+    </script>
+  </body>
+</html>
